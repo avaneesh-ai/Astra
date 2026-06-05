@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#021328"/>
+      <stop offset=".48" stop-color="#040914"/>
+      <stop offset="1" stop-color="#17031e"/>
+    </linearGradient>
+    <linearGradient id="horizon" x1="0" x2="1">
+      <stop offset="0" stop-color="#00c8ff"/>
+      <stop offset=".45" stop-color="#2968ff"/>
+      <stop offset="1" stop-color="#b53dff"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <path d="M0 530 C220 390 440 650 690 520 C980 372 1140 470 1600 390 L1600 900 L0 900Z" fill="#06162f" opacity=".95"/>
+  <path d="M0 590 C260 500 450 610 720 552 C990 492 1220 510 1600 442" fill="none" stroke="url(#horizon)" stroke-width="5" opacity=".95" filter="url(#glow)"/>
+  <path d="M0 660 C270 570 520 655 780 610 C1040 565 1300 590 1600 520" fill="none" stroke="#00c8ff" stroke-width="2" opacity=".34"/>
+  <path d="M0 710 C240 632 490 704 770 670 C1080 632 1300 662 1600 580" fill="none" stroke="#b66cff" stroke-width="2" opacity=".36"/>
+  <g opacity=".45" stroke="#27cfff" stroke-width="1" fill="none">
+    <path d="M34 165 92 132 150 165 150 231 92 264 34 231Z"/>
+    <path d="M160 74 224 112 224 184 160 222 96 184 96 112Z"/>
+    <path d="M260 32 320 68 320 136 260 172 200 136 200 68Z"/>
+    <path d="M64 165 92 182 120 165M92 182v48"/>
+  </g>
+  <g opacity=".55" stroke="#b66cff" stroke-width="1" fill="none">
+    <path d="M1310 150 1346 170 1346 212 1310 234 1274 212 1274 170Z"/>
+    <path d="M1455 282 1492 304 1492 348 1455 370 1418 348 1418 304Z"/>
+    <path d="M1510 132 1540 150 1540 186 1510 204 1480 186 1480 150Z"/>
+  </g>
+  <g opacity=".75">
+    <circle cx="420" cy="404" r="4" fill="#21d4ff"/>
+    <circle cx="520" cy="340" r="3" fill="#21d4ff"/>
+    <circle cx="1180" cy="222" r="4" fill="#c76cff"/>
+    <circle cx="1370" cy="120" r="5" fill="#e6b6ff"/>
+    <circle cx="1440" cy="620" r="5" fill="#c76cff"/>
+  </g>
+  <g opacity=".28" stroke="url(#horizon)" stroke-width="1">
+    <path d="M90 62v168M140 120v200M222 92v220M1318 250v250M1388 110v440M1458 260v390"/>
+  </g>
+</svg>

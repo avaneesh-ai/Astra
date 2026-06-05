@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Astra_AI</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div id="authView" class="auth-screen">
+      <section class="auth-panel" aria-label="Astra_AI login">
+        <div class="auth-brand">
+          <div class="logo-mark" aria-hidden="true">
+            <img src="/assets/astra-logo.svg" alt="" />
+          </div>
+          <div>
+            <p class="eyebrow">Astra_AI</p>
+            <h1>Welcome back</h1>
+          </div>
+        </div>
+
+        <form id="stepOneForm" class="auth-form">
+          <label>
+            Email ID
+            <input id="emailInput" type="email" autocomplete="email" placeholder="you@example.com" required />
+          </label>
+          <label>
+            Password
+            <input id="passwordInput" type="password" autocomplete="current-password" placeholder="Enter password" minlength="6" required />
+          </label>
+          <button class="primary-button" type="submit">Next</button>
+        </form>
+
+        <form id="stepTwoForm" class="auth-form hidden">
+          <label>
+            Name
+            <input id="nameInput" type="text" autocomplete="name" placeholder="Your name" required />
+          </label>
+          <label>
+            Mobile number
+            <input id="mobileInput" type="tel" autocomplete="tel" placeholder="+91 98765 43210" required />
+          </label>
+          <div class="auth-actions">
+            <button id="backToStepOne" class="ghost-button" type="button">Back</button>
+            <button class="primary-button" type="submit">Send link</button>
+          </div>
+        </form>
+
+        <div id="emailSentPanel" class="email-panel hidden">
+          <p class="panel-title">Check your email</p>
+          <p id="emailSentText"></p>
+          <a id="demoLoginLink" class="primary-button hidden" href="#">Open login link</a>
+        </div>
+      </section>
+    </div>
+
+    <div id="confirmModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <div class="modal-panel">
+        <p class="eyebrow">Astra_AI</p>
+        <h2 id="confirmTitle">Do you want to login to this app?</h2>
+        <div class="modal-actions">
+          <button id="cancelLogin" class="ghost-button" type="button">Cancel</button>
+          <button id="confirmLogin" class="primary-button" type="button">Okay</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="appShell" class="app-shell hidden">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="logo-mark small" aria-hidden="true">
+            <img src="/assets/astra-logo.svg" alt="" />
+          </div>
+          <div>
+            <strong>Astra_AI</strong>
+            <span id="sidebarUser">Workspace</span>
+          </div>
+        </div>
+
+        <nav class="nav-list" aria-label="Main sections">
+          <button class="nav-button active" data-section="chat" type="button"><span>A</span>AI chatbot</button>
+          <button class="nav-button" data-section="projects" type="button"><span>P</span>Project</button>
+          <button class="nav-button" data-section="images" type="button"><span>I</span>Image</button>
+          <button class="nav-button" data-section="cowork" type="button"><span>C</span>Co-work</button>
+          <button class="nav-button" data-section="settings" type="button"><span>S</span>Settings</button>
+          <button id="adminNav" class="nav-button hidden" data-section="admin" type="button"><span>M</span>Admin</button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <button id="logoutButton" class="ghost-button full" type="button">Logout</button>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" id="sectionKicker">AI chatbot</p>
+            <h2 id="sectionTitle">Aurexis</h2>
+          </div>
+          <div class="status-row">
+            <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch theme" aria-pressed="true">
+              <span></span>
+            </button>
+            <span id="ollamaStatus" class="status-pill">Ollama checking</span>
+            <span id="planStatus" class="status-pill accent">$25/year Pro</span>
+          </div>
+        </header>
+
+        <section id="chatSection" class="section-view active">
+          <div class="chat-layout">
+            <aside class="chat-rail">
+              <button id="newChatButton" class="primary-button full" type="button">New chat</button>
+              <h3>Chats</h3>
+              <div id="chatList" class="stack-list"></div>
+            </aside>
+
+            <div class="chat-workspace">
+              <div class="model-strip">
+                <label>
+                  Model
+                  <select id="modelSelect"></select>
+                </label>
+                <label>
+                  Project
+                  <select id="chatProjectSelect"></select>
+                </label>
+              </div>
+              <div id="modelCards" class="model-grid"></div>
+              <div id="messageList" class="message-list" aria-live="polite"></div>
+              <form id="chatForm" class="composer">
+                <textarea id="chatInput" rows="3" placeholder="Message Aurexis"></textarea>
+                <button id="voiceButton" class="icon-button" type="button" aria-label="Voice mode" title="Voice mode"><span class="mic-icon"></span></button>
+                <button class="primary-button" type="submit">Send</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <section id="projectsSection" class="section-view">
+          <div class="section-grid two">
+            <form id="projectForm" class="tool-panel">
+              <h3>Create project</h3>
+              <label>
+                Project name
+                <input id="projectNameInput" type="text" placeholder="Astra launch plan" required />
+              </label>
+              <label>
+                Goal
+                <textarea id="projectGoalInput" rows="5" placeholder="What should this project help with?"></textarea>
+              </label>
+              <button class="primary-button" type="submit">Create project</button>
+            </form>
+            <div class="tool-panel">
+              <h3>Projects</h3>
+              <div id="projectList" class="stack-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="imagesSection" class="section-view">
+          <div class="section-grid two">
+            <form id="imageForm" class="tool-panel">
+              <h3>Create image</h3>
+              <label>
+                Prompt
+                <textarea id="imagePromptInput" rows="7" placeholder="A bright futuristic workspace for Astra_AI"></textarea>
+              </label>
+              <label>
+                Style
+                <select id="imageStyleInput">
+                  <option>Cinematic</option>
+                  <option>Clean product render</option>
+                  <option>Editorial illustration</option>
+                  <option>Soft 3D</option>
+                  <option>Poster art</option>
+                </select>
+              </label>
+              <button class="primary-button" type="submit">Generate image</button>
+            </form>
+            <div class="tool-panel image-panel">
+              <h3>Image</h3>
+              <div id="imageGallery" class="image-gallery"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="coworkSection" class="section-view">
+          <div class="section-grid two">
+            <form id="coworkForm" class="tool-panel">
+              <h3>Co-work</h3>
+              <label>
+                Shared note
+                <textarea id="coworkNoteInput" rows="8" placeholder="Write a shared idea, task, or decision"></textarea>
+              </label>
+              <button class="primary-button" type="submit">Add note</button>
+            </form>
+            <div class="tool-panel">
+              <h3>Workspace notes</h3>
+              <div id="coworkList" class="stack-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="settingsSection" class="section-view">
+          <div class="settings-grid">
+            <div class="tool-panel">
+              <h3>Astra_AI</h3>
+              <div class="setup-callout">
+                <strong>Ollama setup</strong>
+                <p>Add these in Vercel Environment Variables:</p>
+                <code>OLLAMA_API_KEY</code>
+                <code>OLLAMA_MODEL = gpt-oss:120b</code>
+                <button id="testOllamaButton" class="ghost-button" type="button">Test Ollama connection</button>
+                <p id="ollamaTestResult" class="test-result"></p>
+              </div>
+              <div id="profileDetails" class="details-list"></div>
+              <label>
+                Default model
+                <select id="defaultModelSelect"></select>
+              </label>
+              <label>
+                Theme
+                <select id="themeSelect">
+                  <option value="dark">Dark mode</option>
+                  <option value="light">Light mode</option>
+                </select>
+              </label>
+              <label class="checkbox-row">
+                <input id="friendlyModeInput" type="checkbox" />
+                Friendly Aurexis replies
+              </label>
+              <label class="checkbox-row">
+                <input id="voiceModeInput" type="checkbox" />
+                Voice Mode
+              </label>
+              <label class="checkbox-row">
+                <input id="safetyModeInput" type="checkbox" />
+                Extra safety checks
+              </label>
+              <label class="checkbox-row">
+                <input id="memoryInput" type="checkbox" />
+                Save chats on this device
+              </label>
+              <label>
+                Auto-lock
+                <select id="autoLockInput">
+                  <option value="0">Never</option>
+                  <option value="15">15 minutes</option>
+                  <option value="30">30 minutes</option>
+                  <option value="60">60 minutes</option>
+                </select>
+              </label>
+              <button id="saveSettingsButton" class="primary-button" type="button">Save settings</button>
+            </div>
+
+            <div class="tool-panel">
+              <h3>Ollama setup</h3>
+              <div class="env-box" aria-label="Vercel environment variables">
+                <div>
+                  <strong>OLLAMA_API_KEY</strong>
+                  <span>Your Ollama API key</span>
+                </div>
+                <div>
+                  <strong>OLLAMA_MODEL</strong>
+                  <span>gpt-oss:120b</span>
+                </div>
+                <div>
+                  <strong>OLLAMA_BASE_URL</strong>
+                  <span>Only for your own server</span>
+                </div>
+              </div>
+              <ol class="step-list">
+                <li>Deploy Astra_AI to Vercel from GitHub.</li>
+                <li>Open Project Settings, then Environment Variables.</li>
+                <li>Add <code>OLLAMA_API_KEY</code> with your Ollama API key.</li>
+                <li>Add <code>OLLAMA_MODEL</code> with <code>gpt-oss:120b</code> for Ollama Cloud.</li>
+                <li>Add <code>OLLAMA_BASE_URL</code> only if you use your own Ollama server.</li>
+                <li>Redeploy the app, then choose a model in AI chatbot.</li>
+              </ol>
+            </div>
+
+            <div class="tool-panel">
+              <h3>Project setup</h3>
+              <ol class="step-list">
+                <li>Create a project in the Project section.</li>
+                <li>Choose that project in the AI chatbot project selector.</li>
+                <li>Every reply will use the active project name and goal.</li>
+                <li>For faster project replies, use Pro and a stronger Ollama model.</li>
+              </ol>
+            </div>
+
+            <div class="tool-panel subscription-panel">
+              <h3>Payment</h3>
+              <p class="price">$25 <span>per year</span></p>
+              <ul class="plain-list">
+                <li>Faster projects</li>
+                <li>More innovative replies</li>
+                <li>Priority image creation</li>
+              </ul>
+              <div class="qr-wrap">
+                <img id="paymentQr" alt="Astra_AI Pro payment QR code" />
+              </div>
+              <label>
+                Payment link
+                <input id="paymentLinkInput" type="url" />
+              </label>
+              <label>
+                Payment status
+                <select id="paymentStatusInput">
+                  <option value="not-paid">Not paid</option>
+                  <option value="paid">Paid</option>
+                </select>
+              </label>
+              <div class="auth-actions">
+                <a id="paymentButton" class="primary-button" href="#" target="_blank" rel="noreferrer">Pay $25/year</a>
+                <button id="savePaymentButton" class="ghost-button" type="button">Update QR</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="adminSection" class="section-view">
+          <div class="section-grid two">
+            <div class="tool-panel">
+              <h3>Admin</h3>
+              <div id="adminStats" class="details-list"></div>
+              <button id="exportDataButton" class="primary-button" type="button">Export data</button>
+            </div>
+            <div class="tool-panel danger-panel">
+              <h3>Local access</h3>
+              <button id="disableAdminButton" class="ghost-button" type="button">Hide admin on this laptop</button>
+              <button id="clearLocalDataButton" class="danger-button" type="button">Clear saved app data</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

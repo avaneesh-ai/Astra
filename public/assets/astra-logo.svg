@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Astra_AI logo</title>
+  <desc id="desc">A luminous A with an orbital ring and star points.</desc>
+  <defs>
+    <linearGradient id="astraA" x1="126" y1="86" x2="382" y2="424" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#66f2ff"/>
+      <stop offset=".45" stop-color="#1f82ff"/>
+      <stop offset="1" stop-color="#b13cff"/>
+    </linearGradient>
+    <linearGradient id="orbit" x1="76" y1="284" x2="444" y2="228" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#54f5ff"/>
+      <stop offset=".48" stop-color="#367dff"/>
+      <stop offset="1" stop-color="#c66bff"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="48%" r="54%">
+      <stop offset="0" stop-color="#6ef2ff" stop-opacity=".46"/>
+      <stop offset="1" stop-color="#000a16" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.25 0 0 0 0 0.76 0 0 0 0 1 0 0 0 .8 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="#020712"/>
+  <circle cx="256" cy="244" r="214" fill="url(#glow)"/>
+  <path d="M97 326c40-67 112-112 187-132 76-20 138-10 159 22 20 30-2 72-61 111-58 38-139 62-217 62-50 0-88-10-107-31-12-13-10-24 39-32Z" fill="none" stroke="url(#orbit)" stroke-width="16" stroke-linecap="round" opacity=".96" filter="url(#softGlow)" transform="rotate(-11 256 270)"/>
+  <path d="M111 395 245 74c4-9 17-9 22 0l135 321h-63l-34-83-99 26-24 57h-71Zm110-112 64-15-31-82-33 97Z" fill="url(#astraA)" filter="url(#softGlow)"/>
+  <path d="M251 177 154 395h-43L245 74c4-9 17-9 22 0l135 321h-44L256 151l-5 26Z" fill="#ffffff" opacity=".12"/>
+  <path d="M256 202 271 241 310 256 271 271 256 310 241 271 202 256 241 241Z" fill="#f8fbff" filter="url(#softGlow)"/>
+  <path d="M371 90 382 121 413 132 382 143 371 174 360 143 329 132 360 121Z" fill="#c78cff" filter="url(#softGlow)"/>
+</svg>
